@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Shifts for {{ username }}</h3>
+<ul>
+  {% for s in schedule %}
+    {% if s[0] == username %}
+    <li>{{ s[1] }}: {{ s[2] }} - {{ s[3] }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back</a>
+{% endblock %}

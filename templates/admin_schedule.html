@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Scheduled Shifts</h2>
+    <ul>
+      {% for username, day, start, end in schedule %}
+        <li>{{ day }}: {{ start }} - {{ end }} assigned to {{ username }}</li>
+      {% else %}
+        <li>No schedule yet.</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ url_for('admin_shifts') }}">Back to Shifts</a><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </body>
+</html>

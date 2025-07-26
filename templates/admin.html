@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add User</h3>
+<form method="post">
+  <input type="hidden" name="type" value="add_user">
+  <input name="username" class="form-control mb-1" placeholder="Username">
+  <input name="password" class="form-control mb-1" placeholder="Password">
+  <label><input type="checkbox" name="admin"> Admin</label>
+  <button class="btn btn-success">Add</button>
+</form>
+
+<h3 class="mt-4">Add Availability</h3>
+<form method="post">
+  <input type="hidden" name="type" value="add_availability">
+  <select name="user_id" class="form-control mb-1">
+    {% for u in users %}<option value="{{ u[0] }}">{{ u[1] }}</option>{% endfor %}
+  </select>
+  <input name="day" class="form-control mb-1" placeholder="Day (e.g. Monday)">
+  <input name="start" class="form-control mb-1" placeholder="Start (e.g. 10:00)">
+  <input name="end" class="form-control mb-1" placeholder="End (e.g. 14:00)">
+  <button class="btn btn-success">Add Availability</button>
+</form>
+
+<form method="post" class="mt-4">
+  <input type="hidden" name="type" value="generate">
+  <button class="btn btn-primary">Generate Schedule</button>
+</form>
+
+<h3 class="mt-4">Schedule</h3>
+<ul>
+  {% for s in schedule %}
+    <li>{{ s[0] }}: {{ s[1] }} {{ s[2] }}-{{ s[3] }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

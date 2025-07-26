@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Welcome, <b>{{ username }}</b>!</p>
+<a href="{{ url_for('shifts') }}" class="btn btn-secondary">View My Shifts</a>
+<a href="{{ url_for('availability') }}" class="btn btn-info mb-3">Set Your Availability</a>
+
+{% if admin %}
+  <a href="{{ url_for('admin') }}" class="btn btn-warning">Admin Panel</a>
+{% endif %}
+<a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+{% endblock %}

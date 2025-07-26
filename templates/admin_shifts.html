@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Manage Shifts (Admin)</h2>
+    <form method="post">
+      Day:<br>
+      <select name="day" required>
+        <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+        <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+      </select><br>
+      Start time:<br>
+      <input type="time" name="start" required><br>
+      End time:<br>
+      <input type="time" name="end" required><br><br>
+      <button type="submit">Add Shift</button>
+    </form>
+
+    <h3>Existing Shifts</h3>
+    <ul>
+      {% for id, day, start, end in shifts %}
+        <li>{{ day }}: {{ start }} - {{ end }}</li>
+      {% else %}
+        <li>No shifts added yet.</li>
+      {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('admin_schedule') }}">View Schedule</a><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </body>
+</html>

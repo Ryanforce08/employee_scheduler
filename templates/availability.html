@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Select Your Available Shifts</h3>
+<form method="post">
+    <label>Day:</label>
+    <select name="day" class="form-control mb-2" required>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+    </select>
+    <label>Start Time:</label>
+    <input type="time" name="start" class="form-control mb-2" required>
+    <label>End Time:</label>
+    <input type="time" name="end" class="form-control mb-2" required>
+    <button class="btn btn-primary">Save Availability</button>
+</form>
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}
