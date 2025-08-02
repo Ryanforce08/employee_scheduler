@@ -26,10 +26,30 @@
   <button class="btn btn-primary">Generate Schedule</button>
 </form>
 
+<form method="post" class="mt-4">
+    <input type="hidden" name="type" value="clear_tables">
+    <button class="btn btn-success">RESET WEEK</button>
+</form>
+
 <h3 class="mt-4">Schedule</h3>
-<ul>
-  {% for s in schedule %}
-    <li>{{ s[0] }}: {{ s[1] }} {{ s[2] }}-{{ s[3] }}</li>
-  {% endfor %}
-</ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Day</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in schedule %}
+            <tr>
+                <td>{{ row[0] }}</td>  <!-- username -->
+                <td>{{ row[1] }}</td>  <!-- day -->
+                <td>{{ row[2] }}</td>  <!-- start -->
+                <td>{{ row[3] }}</td>  <!-- end -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

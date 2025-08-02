@@ -1,12 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>Shifts for {{ username }}</h3>
-<ul>
-  {% for s in schedule %}
-    {% if s[0] == username %}
-    <li>{{ s[1] }}: {{ s[2] }} - {{ s[3] }}</li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<style>
+  table {
+    border-collapse: collapse; /* prevents double borders */
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  th, td {
+    border: 1px solid black; /* shows borders around each cell */
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f0f0f0;
+  }
+</style>
+<table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for username, days in schedule.items() %}
+            <tr>
+                <td>{{ username }}</td>
+                {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+                    <td>{{ days[day]|safe }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back</a>
 {% endblock %}
